@@ -1,0 +1,52 @@
+Presente		=PROCV("Positivas";Celulas!$F$5:$J$12;2;FALSO)
+Coletiva		=PROCV("Positivas";Celulas!$F$5:$J$12;3;FALSO)
+1/2 Presença	=PROCV("Positivas";Celulas!$F$5:$J$12;4;FALSO)
+Especial		=PROCV("Positivas";Celulas!$F$5:$J$12;5;FALSO)
+
+Não teve aula	=PROCV("Neutras";Celulas!$F$5:$J$12;2;FALSO)
+Sem lista		=PROCV("Neutras";Celulas!$F$5:$J$12;3;FALSO)
+Prova			=PROCV("Neutras";Celulas!$F$5:$J$12;4;FALSO)
+Especial		=PROCV("Neutras";Celulas!$F$5:$J$12;5;FALSO)
+
+Ausente			=PROCV("Negativas";Celulas!$F$5:$J$12;2;FALSO)
+Especial		=PROCV("Negativas";Celulas!$F$5:$J$12;3;FALSO)
+
+
+Pesos:
+=PROCV("Pesos +";Celulas!$F$5:$J$12;2;FALSO)
+=PROCV("Pesos -";Celulas!$F$5:$J$12;2;FALSO)
+
+New:
+=(
+	ARREDONDAR.PARA.BAIXO(
+	
+	(
+	
+	(
+	(CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;2;FALSO))* VALOR(PROCV("Pesos +";Celulas!$F$5:$J$12;2;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;3;FALSO))* VALOR(PROCV("Pesos +";Celulas!$F$5:$J$12;3;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;4;FALSO))* VALOR(PROCV("Pesos +";Celulas!$F$5:$J$12;4;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;5;FALSO))* VALOR(PROCV("Pesos +";Celulas!$F$5:$J$12;5;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;2;FALSO))* VALOR(PROCV("Pesos =";Celulas!$F$5:$J$12;2;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;3;FALSO))* VALOR(PROCV("Pesos =";Celulas!$F$5:$J$12;3;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;4;FALSO))* VALOR(PROCV("Pesos =";Celulas!$F$5:$J$12;4;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;5;FALSO))* VALOR(PROCV("Pesos =";Celulas!$F$5:$J$12;5;FALSO))) +
+	(CONT.SE(C7:D100;PROCV("Negativas";Celulas!$F$5:$J$12;2;FALSO))* (VALOR(PROCV("Pesos -";Celulas!$F$5:$J$12;2;FALSO))+1)) +
+	(CONT.SE(C7:D100;PROCV("Negativas";Celulas!$F$5:$J$12;3;FALSO))* (VALOR(PROCV("Pesos -";Celulas!$F$5:$J$12;3;FALSO))+1))
+	)*100/(
+	CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;2;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;3;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;4;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Positivas";Celulas!$F$5:$J$12;5;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;2;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;3;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;4;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Neutras";Celulas!$F$5:$J$12;5;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Negativas";Celulas!$F$5:$J$12;2;FALSO)) +
+	CONT.SE(C7:D100;PROCV("Negativas";Celulas!$F$5:$J$12;3;FALSO))
+	)
+	
+	)
+	
+	;2)
+)
